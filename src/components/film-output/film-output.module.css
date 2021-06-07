@@ -69,3 +69,12 @@ hr {
   color: #FBFBFB;
   margin: 0;
 }
+
+.filmContainerLogo {
+  width: 95px;
+  height: 141px;
+}
+
+.filmInfoContainer {
+  max-width: 300px;
+}

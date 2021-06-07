@@ -52,7 +52,6 @@ a {
 }
 
 .filmPageFilmInfo {
-  background-image: url(../images/film-page-background.png);
   background-position: top right;
   background-repeat: no-repeat;
   background-size: cover;
@@ -74,7 +73,7 @@ a {
 .filmPageRatingContainer {
   display: flex;
   align-items: center;
-  margin: 0 0 197px 0;
+  margin: 0 0 219px 0;
 }
 
 .filmPageTitle {
@@ -125,12 +124,13 @@ a {
 }
 
 .filmPageFilmInfoAwards {
-  margin-top: 50px;
+  margin: 73px 0 0 0;
   font-family: Montserrat;
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
   color: #FBFBFB;
+  max-width: 433px;
 }
 
 .filmPageAnnotation {
@@ -171,7 +171,6 @@ a {
 }
 
 .filmPageSimilarFilmContainer {
-  background-image: url(../images/film-page-background.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 263px;

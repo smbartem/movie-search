@@ -1,25 +1,24 @@
 import React from "react";
 import styles from "./film-output.module.css";
-import filmImage from "../images/film-image.png";
 
-const FilmOutput = () => {
+const FilmOutput = (props) => {
+  const { data, makeFilmPageOpen } = props;
   return (
-    <div className={styles.FilmOutput}>
+    <div className={styles.FilmOutput} onClick={makeFilmPageOpen}>
       <div className={styles.filmContainer}>
-      <img alt="film poster" src={filmImage} />
+      <img alt="film poster" src={data.image} className={styles.filmContainerLogo}/>
       <div className={styles.filmInfo}>
         <div className={styles.filmInfoHeader}>
-          <h2 className={styles.filmInfoTitle}>The Queen's Gambit</h2>
-          <div className={styles.filmRating}>IMDb 8.8</div>
+          <h2 className={styles.filmInfoTitle}>{data.title}</h2>
+          <div className={styles.filmRating}>IMDb {data.imDbRating}</div>
         </div>
         <div className={styles.filmDescription}>
-          <p className={styles.filmInfoText}>TVSeries | Drama | 2020</p>
+          <p className={styles.filmInfoText}>{data.type} | {data.genreList[0].value} | {data.year}</p>
         </div>
         <hr />
-        <div>
+        <div className={styles.filmInfoContainer}>
           <p className={styles.filmInfoText}>
-            Top Rated TV #148 | Won 2 Golden Globes. <br />
-            Another 12 wins & 19 nominations.
+            {data.awards}
           </p>
         </div>
       </div>
