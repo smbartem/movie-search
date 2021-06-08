@@ -36,6 +36,7 @@ a {
   margin-right: 18px;
   background: #1B1919;
   border: none;
+  cursor: pointer;
 }
 
 .filmPageHeaderLogo {
@@ -110,6 +111,7 @@ a {
   box-sizing: border-box;
   border-radius: 40px;
   padding: 19px 68px;
+  cursor: pointer;
 }
 
 .filmPageFilmInfoAwards {
@@ -165,7 +167,7 @@ a {
   width: 263px;
   height: 361px;
   border-radius: 8px;
-  
+  cursor: pointer;
 }
 
 .filmPageSimilarFilmInnerContainer {

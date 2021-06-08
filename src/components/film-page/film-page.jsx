@@ -94,7 +94,6 @@ const FilmPage = (props) => {
             <h3 className={styles.filmPageSimilarTitle}>You may also like</h3>
             <div className={styles.filmPageSimilarContainer}>
               <SimilarFilm data={data.similars[0]}/>
-              {console.log(<SimilarFilm data={data.similars[0]}/>)}
               <SimilarFilm data={data.similars[1]}/>
               <SimilarFilm data={data.similars[2]}/>
               <SimilarFilm data={data.similars[3]}/>
