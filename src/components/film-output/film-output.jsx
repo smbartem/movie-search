@@ -1,4 +1,5 @@
 import React from "react";
+import RatingLabel from "../rating-label/rating-label"
 import styles from "./film-output.module.css";
 
 const FilmOutput = (props) => {
@@ -10,7 +11,7 @@ const FilmOutput = (props) => {
       <div className={styles.filmInfo}>
         <div className={styles.filmInfoHeader}>
           <h2 className={styles.filmInfoTitle}>{data.title}</h2>
-          <div className={styles.filmRating}>IMDb {data.imDbRating}</div>
+          <RatingLabel imDbRating={data.imDbRating}/>
         </div>
         <div className={styles.filmDescription}>
           <p className={styles.filmInfoText}>{data.type} | {data.genreList[0].value} | {data.year}</p>

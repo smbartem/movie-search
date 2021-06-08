@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Main from "../main-page/main-page";
 import FilmPage from "../film-page/film-page";
 
+const key = 'k_eb9xmxgq';
+
 const App = () => {
   const [isMainPageOpen, setMainPageOpen] = useState(true);
   const [isFilmOutputOpen, setFilmOutputOpen] = useState(false);
@@ -17,6 +19,7 @@ const App = () => {
     setMainPageOpen(false);
     setFilmOutputOpen(false);
     setFilmPageOpen(true);
+    setInputText("")
   };
 
   const makeMainPageOpen = (e) => {
@@ -24,6 +27,7 @@ const App = () => {
     setFilmPageOpen(false);
     setFilmOutputOpen(false);
     setMainPageOpen(true);
+    setInputText("")
   };
 
   const handleInput = (e) => setInputText(e.target.value);
@@ -31,7 +35,7 @@ const App = () => {
     e.preventDefault();
     const getIdUrl = new URL(
       inputText,
-      "https://imdb-api.com/en/API/Search/k_28e9hzt3/"
+      `https://imdb-api.com/en/API/Search/${key}/`
     );
     fetch(getIdUrl)
       .then((response) => {
@@ -46,22 +50,23 @@ const App = () => {
         }
         const getDataUrl = new URL(
           res.results[0].id,
-          "https://imdb-api.com/en/API/Title/k_28e9hzt3/"
+          `https://imdb-api.com/en/API/Title/${key}/`
         );
         const getTrailerUrl = new URL(
           res.results[0].id,
-          "https://imdb-api.com/en/API/Trailer/k_28e9hzt3/"
+          `https://imdb-api.com/en/API/Trailer/${key}/`
         );
         const getImageUrl = new URL(
           `${res.results[0].id}/Short`,
-          "https://imdb-api.com/en/API/Images/k_28e9hzt3/"
+          `https://imdb-api.com/en/API/Images/${key}/`
         );
-        fetch(getTrailerUrl)
+
+        fetch(getTrailerUrl.href)
           .then((response) => {
             if (response.ok) {
               return response.json();
             }
-            return Promise.reject(`Ошибка: ${response.status}`);
+            return Promise.reject(`Error: ${response.status}`);
           })
           .then((res) =>
             res["errorMessage"]
@@ -69,12 +74,12 @@ const App = () => {
               : setTrailerLink(res.link)
           )
           .catch((err) => setError(`${err}`));
-        fetch(getImageUrl)
+        fetch(getImageUrl.href)
           .then((response) => {
             if (response.ok) {
               return response.json();
             }
-            return Promise.reject(`Ошибка: ${response.status}`);
+            return Promise.reject(`Error: ${response.status}`);
           })
           .then((res) =>
             res["errorMessage"]
@@ -82,19 +87,20 @@ const App = () => {
               : setBackgroundImageLink(res.items[0].image)
           )
           .catch((err) => setError(`${err}`));
-        fetch(getDataUrl)
+        fetch(getDataUrl.href)
           .then((response) => {
             if (response.ok) {
               return response.json();
             }
-            return Promise.reject(`Ошибка: ${response.status}`);
+            return Promise.reject(`Error: ${response.status}`);
           })
           .then((res) =>
             res["errorMessage"]
-              ? Promise.reject(`Ошибка: ${res.errorMessage}`)
+              ? Promise.reject(`Error: ${res.errorMessage}`)
               : setData(res)
           )
           .then(() => setFilmOutputOpen(true))
+          .then(() => setInputText(""))
           .catch((err) => setError(`${err}`));
       })
       .catch((err) => setError(`${err}`));
@@ -118,10 +124,12 @@ const App = () => {
       {isFilmPageOpen && (
         <FilmPage
           data={data}
-          makeFilmPageOpen={makeFilmPageOpen}
           makeMainPageOpen={makeMainPageOpen}
           trailerLink={trailerLink}
           backgroundImageLink={backgroundImageLink}
+          inputText={inputText}
+          handleInput={handleInput}
+          handleSubmit={handleSubmit}
         />
       )}
     </>

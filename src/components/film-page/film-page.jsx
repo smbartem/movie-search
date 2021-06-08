@@ -1,4 +1,6 @@
 import React from "react";
+import RatingLabel from "../rating-label/rating-label";
+import SimilarFilm from "./film-page-similar"
 import styles from "./film-page.module.css";
 import vector from "../images/vector.png";
 import backgroundImageReserve from "../images/background.png";
@@ -6,10 +8,12 @@ import backgroundImageReserve from "../images/background.png";
 const FilmPage = (props) => {
   const {
     data,
-    makeFilmPageOpen,
     makeMainPageOpen,
     trailerLink,
     backgroundImageLink,
+    inputText,
+    handleInput,
+    handleSubmit,
   } = props;
 
   return (
@@ -23,17 +27,23 @@ const FilmPage = (props) => {
           >
             Richbee Shows
           </a>
-          <form>
-            <div className={styles.filmPageHeaderSearch}>
-              <input
-                type="image"
-                alt="searching"
-                src={vector}
-                className={styles.filmPageHeaderImage}
-              />
+          <form onSubmit={handleSubmit}>
+            <div
+              className={styles.filmPageHeaderSearch}
+              onSubmit={handleSubmit}
+            >
+              <button type="submit" className={styles.filmPageHeaderButton}>
+                <img
+                  alt="searching"
+                  src={vector}
+                  className={styles.filmPageHeaderLogo}
+                />{" "}
+              </button>
               <input
                 className={styles.filmPageHeaderInput}
                 placeholder="Type here smth..."
+                value={inputText}
+                onChange={handleInput}
               />
             </div>
           </form>
@@ -52,7 +62,7 @@ const FilmPage = (props) => {
             <div className={styles.filmPageFilmInfoContainer}>
               <h1 className={styles.filmPageTitle}>{data.title}</h1>
               <div className={styles.filmPageRatingContainer}>
-                <div className={styles.filmRating}>IMDb {data.imDbRating}</div>
+                <RatingLabel imDbRating={data.imDbRating} />
                 <p className={styles.filmPageFilmInfoDescription}>
                   {data.type} | {data.genreList[0].value} | {data.year}
                 </p>
@@ -83,22 +93,11 @@ const FilmPage = (props) => {
           <div className={styles.filmPageMainContainer}>
             <h3 className={styles.filmPageSimilarTitle}>You may also like</h3>
             <div className={styles.filmPageSimilarContainer}>
-              <div
-                className={styles.filmPageSimilarFilmContainer}
-                style={{ backgroundImage: `url("${data.similars[0].image}")` }}
-              ></div>
-              <div
-                className={styles.filmPageSimilarFilmContainer}
-                style={{ backgroundImage: `url("${data.similars[1].image}")` }}
-              ></div>
-              <div
-                className={styles.filmPageSimilarFilmContainer}
-                style={{ backgroundImage: `url("${data.similars[2].image}")` }}
-              ></div>
-              <div
-                className={styles.filmPageSimilarFilmContainer}
-                style={{ backgroundImage: `url("${data.similars[3].image}")` }}
-              ></div>
+              <SimilarFilm data={data.similars[0]}/>
+              {console.log(<SimilarFilm data={data.similars[0]}/>)}
+              <SimilarFilm data={data.similars[1]}/>
+              <SimilarFilm data={data.similars[2]}/>
+              <SimilarFilm data={data.similars[3]}/>
             </div>
           </div>
         </section>

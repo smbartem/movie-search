@@ -1,6 +1,7 @@
 .mainPage {
   background-image: url(../images/background.png);
   min-height: 100vh;
+  overflow: hidden;
   width: 100%;
   background-position: bottom center;
   background-repeat: no-repeat;

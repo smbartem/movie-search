@@ -28,21 +28,6 @@
   margin-bottom: 15px;
 }
 
-.filmRating {
-  background: #FAC539;
-  border-radius: 8px;
-  Width: 87px;
-  Height: 30px;
-  font-family: Montserrat;
-  font-weight: 900;
-  font-size: 12px;
-  line-height: 15px;
-  color: #000000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 hr {
   width: 100%;
   margin: 0 0 15px 0;

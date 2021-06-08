@@ -32,8 +32,13 @@ a {
   align-items: center;
 }
 
-.filmPageHeaderImage {
+.filmPageHeaderButton {
   margin-right: 18px;
+  background: #1B1919;
+  border: none;
+}
+
+.filmPageHeaderLogo {
   width: 20px;
   height: 20px;
 }
@@ -85,29 +90,13 @@ a {
   margin: 0 0 30px 0;
 }
 
-.filmRating {
-  background: #FAC539;
-  border-radius: 8px;
-  Width: 87px;
-  Height: 30px;
-  font-family: Montserrat;
-  font-weight: 900;
-  font-size: 12px;
-  line-height: 15px;
-  color: #000000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 36px;
-}
-
 .filmPageFilmInfoDescription {
   font-family: Montserrat;
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
   color: #FBFBFB;
-  margin: 0;
+  margin: 0 0 0 36px;
 }
 
 .filmPageWatchLink {
@@ -176,6 +165,38 @@ a {
   width: 263px;
   height: 361px;
   border-radius: 8px;
+  
+}
+
+.filmPageSimilarFilmInnerContainer {
+  margin: 30px 30px;
+}
+
+.filmPageSimilarFilmTitle {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+  margin: 0 0 8px 0;
+}
+
+.filmPageSimilarFilmInfo {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  margin: 0 0 8px 0;
+}
+
+.filmPageSimilarFilmDescription {
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 18px;
+  color: #FFFFFF;
+  margin: 13px 0 16px 0;
 }
 
 .filmPageFooter {
